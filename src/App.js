@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PersonInfo } from './components/PersonInfo';
 
 function App({ data }) {
   const [selectedPerson, setSelectedPerson] = useState(data[0]);
@@ -15,13 +16,7 @@ function App({ data }) {
         {peopleList}
       </ul>
 
-      <div>
-        <h3>{selectedPerson.name}</h3>
-        <p>Data de Nascimento: {selectedPerson.birthday}</p>
-        <p>Cidade: {selectedPerson.city}</p>
-        <p>Estado: {selectedPerson.state}</p>
-        <p>País: {selectedPerson.country}</p>
-      </div>
+      <PersonInfo person={selectedPerson} />
     </div>
   );
 }
