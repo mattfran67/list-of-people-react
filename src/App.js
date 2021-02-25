@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PersonInfo } from './components/PersonInfo';
+import { ShowContainer } from './components/ShowContainer';
 
 function App({ data }) {
   const [selectedPerson, setSelectedPerson] = useState(data[0]);
@@ -12,9 +13,11 @@ function App({ data }) {
 
   return (
     <div className="content">
-      <ul>
-        {peopleList}
-      </ul>
+      <ShowContainer>
+        <ul>
+          {peopleList}
+        </ul>
+      </ShowContainer>
 
       <PersonInfo person={selectedPerson} />
     </div>
