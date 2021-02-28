@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  background-color: #fafafa;
+  background-color: #f6f6f6;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,6 +13,23 @@ body {
 .content {
   max-width: 1000px;
   margin: auto;
+}
+
+nav {
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1);
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: white;
+}
+
+nav a {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 3px;
+}
+
+nav a:hover {
+  background-color: #f1f1f1;
 }
 
 .header-color {
