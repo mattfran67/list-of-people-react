@@ -1,38 +1,44 @@
-import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
-export function AddPerson({ personAdded }) {
-  const [name, setName] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
+export function EditPerson({ data, personEdited }) {
+  const { personId } = useParams();
+  const history = useHistory();
 
-  const onNameChange = ({ target }) => setName(target.value); 
+  let person = data.find(person => person.id === personId);
+  person = person ? person : data[0];
+
+  const [name, setName] = useState(person.name);
+  const [birthday, setBirthday] = useState(
+    person.birthday.toISOString().slice(0, 10)
+  );
+  const [city, setCity] = useState(person.city);
+  const [state, setState] = useState(person.state);
+  const [country, setCountry] = useState(person.country);
+
+  const onNameChange = ({ target }) => setName(target.value);
   const onBirthdayChange = ({ target }) => setBirthday(target.value);
-  const onCityChange = ({ target }) => setCity(target.value); 
-  const onStateChange = ({ target }) => setState(target.value); 
-  const onCountryChange = ({ target }) => setCountry(target.value); 
+  const onCityChange = ({ target }) => setCity(target.value);
+  const onStateChange = ({ target }) => setState(target.value);
+  const onCountryChange = ({ target }) => setCountry(target.value);
 
   const handleSubmit = e => {
     e.preventDefault();
-    const person = { name, city, state, country };
     const [year, month, day] = birthday.split('-');
-    person.birthday = new Date(year, month - 1, day);
-    person.id = nanoid();
-
-    personAdded(person);
-
-    setName('');
-    setBirthday('');
-    setCity('');
-    setState('');
-    setCountry('');
-  };
+    personEdited({
+      id: personId,
+      name,
+      birthday: new Date(year, month - 1, day),
+      city,
+      state,
+      country
+    });
+    history.push('/');
+  }
 
   return (
-    <div className="content">
-      <form className="card p-md-5 p-2 shadow" onSubmit={handleSubmit}>
+    <div className="content" onSubmit={handleSubmit}>
+      <form className="card p-md-5 p-2 shadow">
         <div className="form-group">
           <label htmlFor="name">Nome:</label>
           <input
@@ -90,7 +96,7 @@ export function AddPerson({ personAdded }) {
             required
           />
         </div>
-        <button className="btn btn-primary">Cadastrar pessoa</button>
+        <button className="btn btn-primary">Editar pessoa</button>
       </form>
     </div>
   );
