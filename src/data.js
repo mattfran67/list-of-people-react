@@ -2,7 +2,7 @@ export const people = [
   {
     id: 0,
     name: "Mateus Gonçalves Franco",
-    birthday: "06/04/2000",
+    birthday: new Date("04/06/2000"),
     city: "Votorantim",
     state: "São Paulo",
     country: "Brasil"
@@ -10,7 +10,7 @@ export const people = [
   {
     id: 1,
     name: "Lucas Bonfim dos Santos",
-    birthday: "05/03/1996",
+    birthday: new Date("03/05/1996"),
     city: "Itu",
     state: "São Paulo",
     country: "Brasil"
@@ -18,7 +18,7 @@ export const people = [
   {
     id: 2,
     name: "João Pereira Silva",
-    birthday: "25/05/1990",
+    birthday: new Date("05/25/1990"),
     city: "Curitiba",
     state: "Paraná",
     country: "Brasil"
@@ -26,7 +26,7 @@ export const people = [
   {
     id: 3,
     name: "Maria Eduarda",
-    birthday: "25/12/2002",
+    birthday: new Date("12/25/2002"),
     city: "Rio de Janeiro",
     state: "Rio de Janeiro",
     country: "Brasil"
@@ -34,7 +34,7 @@ export const people = [
   {
     id: 4,
     name: "Luciana Ferreira",
-    birthday: "13/06/1986",
+    birthday: new Date("06/13/1986"),
     city: "Porto Alegre",
     state: "Rio Grande do Sul",
     country: "Brasil"
@@ -42,7 +42,7 @@ export const people = [
   {
     id: 5,
     name: "Sofia Lucia",
-    birthday: "24/07/2005",
+    birthday: new Date("07/24/2005"),
     city: "Belo Horizonte",
     state: "Minas Gerais",
     country: "Brasil"
