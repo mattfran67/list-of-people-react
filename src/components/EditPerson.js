@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
+import { AvatarSelector } from './AvatarSelector';
+
 export function EditPerson({ data, personEdited }) {
   const { personId } = useParams();
   const history = useHistory();
@@ -16,6 +18,8 @@ export function EditPerson({ data, personEdited }) {
   const [state, setState] = useState(person.state);
   const [country, setCountry] = useState(person.country);
 
+  const [avatarNum, setAvatarNum] = useState(person.avatar);
+
   const onNameChange = ({ target }) => setName(target.value);
   const onBirthdayChange = ({ target }) => setBirthday(target.value);
   const onCityChange = ({ target }) => setCity(target.value);
@@ -28,6 +32,7 @@ export function EditPerson({ data, personEdited }) {
     personEdited({
       id: personId,
       name,
+      avatar: avatarNum,
       birthday: new Date(year, month - 1, day),
       city,
       state,
@@ -39,6 +44,10 @@ export function EditPerson({ data, personEdited }) {
   return (
     <div className="content" onSubmit={handleSubmit}>
       <form className="card p-md-5 p-2 shadow">
+        <AvatarSelector
+          avatarNum={avatarNum}
+          setAvatarNum={setAvatarNum}
+        />
         <div className="form-group">
           <label htmlFor="name">Nome:</label>
           <input

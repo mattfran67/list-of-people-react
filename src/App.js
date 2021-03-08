@@ -27,6 +27,7 @@ function App({ data }) {
   return (
     <Router>
       <Navbar />
+
       <Switch>
         <Route exact path="/">
           <Home data={people} />
@@ -39,6 +40,12 @@ function App({ data }) {
         </Route>
         <Redirect to="/" />
       </Switch>
+
+      <div className="content card p-3 mt-3 text-center">
+        <a href="https://br.freepik.com/vetores/pessoas">
+          Pessoas vetor criado por skydesign - br.freepik.com
+        </a>
+      </div>
     </Router>
   );
 }

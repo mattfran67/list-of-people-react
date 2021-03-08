@@ -1,12 +1,16 @@
 import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
 
+import { AvatarSelector } from './AvatarSelector';
+
 export function AddPerson({ personAdded }) {
   const [name, setName] = useState('');
   const [birthday, setBirthday] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
+
+  const [avatarNum, setAvatarNum] = useState(0);
 
   const onNameChange = ({ target }) => setName(target.value); 
   const onBirthdayChange = ({ target }) => setBirthday(target.value);
@@ -15,10 +19,12 @@ export function AddPerson({ personAdded }) {
   const onCountryChange = ({ target }) => setCountry(target.value); 
 
   const handleSubmit = e => {
+    console.log('submited');
     e.preventDefault();
     const person = { name, city, state, country };
     const [year, month, day] = birthday.split('-');
     person.birthday = new Date(year, month - 1, day);
+    person.avatar = avatarNum;
     person.id = nanoid();
 
     personAdded(person);
@@ -28,11 +34,16 @@ export function AddPerson({ personAdded }) {
     setCity('');
     setState('');
     setCountry('');
+    setAvatarNum(0);
   };
 
   return (
     <div className="content">
       <form className="card p-md-5 p-2 shadow" onSubmit={handleSubmit}>
+        <AvatarSelector
+          avatarNum={avatarNum}
+          setAvatarNum={setAvatarNum}
+        />
         <div className="form-group">
           <label htmlFor="name">Nome:</label>
           <input
@@ -90,7 +101,9 @@ export function AddPerson({ personAdded }) {
             required
           />
         </div>
-        <button className="btn btn-primary">Cadastrar pessoa</button>
+        <button className="btn btn-primary" type="submit">
+          Cadastrar pessoa
+        </button>
       </form>
     </div>
   );

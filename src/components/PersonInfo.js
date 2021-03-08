@@ -1,24 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Avatar } from './Avatar';
 
 export function PersonInfo({ person }) {
   return (
     <div className="card shadow">
-      <h3 className="card-header header-color">{person.name}</h3>
+      <div className="card-header">
+        <Avatar
+          diameter={75}
+          avatar={person.avatar}
+        />
+        <h4 className="card-text person-name">{person.name}</h4>
+      </div>
       <div className="card-body">
-        <p>
+        <p className="card-text">
           <span className="text-secondary">Data de Nascimento: </span>
           {person.birthday.toLocaleDateString()}
         </p>
-        <p>
+        <p className="card-text">
           <span className="text-secondary">Cidade: </span>
           {person.city}
         </p>
-        <p>
+        <p className="card-text">
           <span className="text-secondary">Estado: </span>
           {person.state}
         </p>
-        <p>
+        <p className="card-text">
           <span className="text-secondary">País: </span>
           {person.country}
         </p>
