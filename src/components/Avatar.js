@@ -1,5 +1,5 @@
 import React from 'react';
-import avatars from '../Avatars.jpg';
+import avatars from '../Avatars-min.jpg';
 
 export function Avatar({ diameter, avatar }) {
   const style = {
